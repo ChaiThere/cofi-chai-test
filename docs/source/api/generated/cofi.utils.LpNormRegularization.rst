@@ -166,6 +166,15 @@ cofi.utils.LpNormRegularization
 
 
 
+
+
+
+
+
+
+
+
+
     .. automethod:: LpNormRegularization.gradient
 
 

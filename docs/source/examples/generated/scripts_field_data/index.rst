@@ -12,6 +12,7 @@ Data Examples
 
     <div class="sphx-glr-thumbnails">
 
+.. thumbnail-parent-div-open
 
 .. raw:: html
 
@@ -80,6 +81,8 @@ Data Examples
       <div class="sphx-glr-thumbnail-title">Surface-Wave Tomography</div>
     </div>
 
+
+.. thumbnail-parent-div-close
 
 .. raw:: html
 

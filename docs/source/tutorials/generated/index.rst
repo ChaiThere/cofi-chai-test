@@ -31,6 +31,7 @@ Below is an ordered list of tutorials.
 
     <div class="sphx-glr-thumbnails">
 
+.. thumbnail-parent-div-open
 
 .. raw:: html
 
@@ -99,6 +100,8 @@ Below is an ordered list of tutorials.
       <div class="sphx-glr-thumbnail-title">Linear & non-linear travel time tomography</div>
     </div>
 
+
+.. thumbnail-parent-div-close
 
 .. raw:: html
 

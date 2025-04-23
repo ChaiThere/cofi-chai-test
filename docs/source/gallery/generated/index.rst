@@ -1,5 +1,5 @@
-User-contributed Gallery
-========================
+CoFI User Gallery
+=================
 
 `This repository <https://github.com/inlab-geo/cofi-gallery/>`_ collects user-contributed CoFI showcases.
 

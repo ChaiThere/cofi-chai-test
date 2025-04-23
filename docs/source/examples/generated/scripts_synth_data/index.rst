@@ -11,6 +11,7 @@ Synthetic Examples
 
     <div class="sphx-glr-thumbnails">
 
+.. thumbnail-parent-div-open
 
 .. raw:: html
 
@@ -181,6 +182,8 @@ Synthetic Examples
       <div class="sphx-glr-thumbnail-title">Xray Tomography</div>
     </div>
 
+
+.. thumbnail-parent-div-close
 
 .. raw:: html
 
