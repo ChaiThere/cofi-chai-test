@@ -139,6 +139,15 @@ cofi.utils.ModelCovariance
 
 
 
+
+
+
+
+
+
+
+
+
     .. automethod:: ModelCovariance.gradient
 
 

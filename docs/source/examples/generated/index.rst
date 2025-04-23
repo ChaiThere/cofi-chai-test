@@ -36,6 +36,9 @@ Example Gallery
 
     <div class="sphx-glr-thumbnails">
 
+.. thumbnail-parent-div-open
+
+.. thumbnail-parent-div-close
 
 .. raw:: html
 
@@ -51,6 +54,7 @@ Data Examples
 
     <div class="sphx-glr-thumbnails">
 
+.. thumbnail-parent-div-open
 
 .. raw:: html
 
@@ -120,6 +124,8 @@ Data Examples
     </div>
 
 
+.. thumbnail-parent-div-close
+
 .. raw:: html
 
     </div>
@@ -133,6 +139,7 @@ Synthetic Examples
 
     <div class="sphx-glr-thumbnails">
 
+.. thumbnail-parent-div-open
 
 .. raw:: html
 
@@ -303,6 +310,8 @@ Synthetic Examples
       <div class="sphx-glr-thumbnail-title">Xray Tomography</div>
     </div>
 
+
+.. thumbnail-parent-div-close
 
 .. raw:: html
 

@@ -353,6 +353,15 @@ cofi.BaseProblem
 
 
 
+
+
+
+
+
+
+
+
+
     .. automethod:: BaseProblem.data_misfit
 
 
