@@ -1,6 +1,31 @@
 import numpy as np
+from functools import partial
 
 from . import BaseInferenceTool, error_handler
+
+
+def _objective_function_wrapper(solution, model_shape, objective_func):
+    """Standalone wrapper function that can be pickled for multiprocessing.
+    
+    This function exists at module level to ensure it can be pickled
+    when using multiprocessing mode='process', particularly on macOS
+    which uses 'spawn' instead of 'fork'.
+    
+    Args:
+        solution: Flattened parameter vector from mealpy
+        model_shape: Original shape for the model
+        objective_func: The objective function to evaluate
+        
+    Returns:
+        Scalar objective value
+    """
+    model = solution.reshape(model_shape)
+    obj_value = objective_func(model)
+    
+    # Ensure scalar return even if objective returns (value, gradient) tuple
+    if isinstance(obj_value, (tuple, list)):
+        return obj_value[0]
+    return obj_value
 
 
 class MealpySma(BaseInferenceTool):
@@ -53,7 +78,8 @@ class MealpySma(BaseInferenceTool):
             "mode": "single",  # "thread", "process", "swarm"
             "n_workers": None,
             "seed": None,
-            "verbose": False,
+            "log_to": None,  # None, "console", or "file" - controls mealpy logging
+            "log_file": "mealpy.log",  # filename when log_to="file"
         }
 
     @classmethod
@@ -116,30 +142,31 @@ class MealpySma(BaseInferenceTool):
             lb = [-100.0] * n_dims
             ub = [100.0] * n_dims
 
+        # Create a picklable objective function using partial
+        # This is crucial for multiprocessing mode='process' on macOS
+        objective_wrapper = partial(
+            _objective_function_wrapper,
+            model_shape=self.inv_problem.model_shape,
+            objective_func=self.inv_problem.objective
+        )
+        
         # Create MEALPY problem dictionary
         self._problem_dict = {
-            "obj_func": self._objective_wrapper,
+            "obj_func": objective_wrapper,
             "bounds": FloatVar(lb=lb, ub=ub),
             "minmax": "min",
         }
+        
+        # Add logging control parameters
+        log_to = self._params.get("log_to")
+        if log_to is not None:
+            self._problem_dict["log_to"] = log_to
+            if log_to == "file":
+                self._problem_dict["log_file"] = self._params.get("log_file", "mealpy.log")
+        else:
+            # Explicitly disable logging when log_to is None
+            self._problem_dict["log_to"] = None
 
-    def _objective_wrapper(self, solution):
-        """Wrapper to reshape solution for CoFI objective
-
-        Following CoFI's model handling architecture:
-        - SMA operates on flattened vectors (MEALPY requirement)
-        - CoFI objective functions expect original model_shape
-        - This wrapper bridges between the two representations
-        - Only extracts scalar objective value (SMA is gradient-free)
-        """
-        model = solution.reshape(self.inv_problem.model_shape)
-        obj_value = self.inv_problem.objective(model)
-
-        # Ensure scalar return even if objective returns (value, gradient) tuple
-        # This handles cases where users reuse gradient-based objective functions
-        if isinstance(obj_value, (tuple, list)):
-            return obj_value[0]
-        return obj_value
 
     def _setup_optimizer(self):
         """Initialize the mealpy optimizer"""
