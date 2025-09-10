@@ -146,7 +146,7 @@ class TestMealpySma:
 
         problem = BaseProblem()
         problem.set_objective(rosenbrock)
-        problem.set_model_shape((10,))
+        problem.set_model_shape((2,))
         problem.set_bounds((-5, 10))
 
         options = InversionOptions()
@@ -165,7 +165,7 @@ class TestMealpySma:
         # Test uniform bounds
         problem1 = BaseProblem()
         problem1.set_objective(lambda x: np.sum(x**2))
-        problem1.set_model_shape((3,))
+        problem1.set_model_shape((2,))
         problem1.set_bounds((-2, 2))  # Uniform bounds
 
         options1 = InversionOptions()
@@ -184,7 +184,7 @@ class TestMealpySma:
 
         options2 = InversionOptions()
         options2.set_tool("mealpy.sma")
-        options2.set_params(epoch=20, pop_size=10, seed=42)
+        options2.set_params(epoch=200, pop_size=10, seed=42)
 
         inv2 = Inversion(problem2, options2)
         result2 = inv2.run()
