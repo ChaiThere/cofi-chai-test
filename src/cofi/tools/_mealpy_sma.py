@@ -6,22 +6,22 @@ from . import BaseInferenceTool, error_handler
 
 def _objective_function_wrapper(solution, model_shape, objective_func):
     """Standalone wrapper function that can be pickled for multiprocessing.
-    
+
     This function exists at module level to ensure it can be pickled
     when using multiprocessing mode='process', particularly on macOS
     which uses 'spawn' instead of 'fork'.
-    
+
     Args:
         solution: Flattened parameter vector from mealpy
         model_shape: Original shape for the model
         objective_func: The objective function to evaluate
-        
+
     Returns:
         Scalar objective value
     """
     model = solution.reshape(model_shape)
     obj_value = objective_func(model)
-    
+
     # Ensure scalar return even if objective returns (value, gradient) tuple
     if isinstance(obj_value, (tuple, list)):
         return obj_value[0]
@@ -147,26 +147,27 @@ class MealpySma(BaseInferenceTool):
         objective_wrapper = partial(
             _objective_function_wrapper,
             model_shape=self.inv_problem.model_shape,
-            objective_func=self.inv_problem.objective
+            objective_func=self.inv_problem.objective,
         )
-        
+
         # Create MEALPY problem dictionary
         self._problem_dict = {
             "obj_func": objective_wrapper,
             "bounds": FloatVar(lb=lb, ub=ub),
             "minmax": "min",
         }
-        
+
         # Add logging control parameters
         log_to = self._params.get("log_to")
         if log_to is not None:
             self._problem_dict["log_to"] = log_to
             if log_to == "file":
-                self._problem_dict["log_file"] = self._params.get("log_file", "mealpy.log")
+                self._problem_dict["log_file"] = self._params.get(
+                    "log_file", "mealpy.log"
+                )
         else:
             # Explicitly disable logging when log_to is None
             self._problem_dict["log_to"] = None
-
 
     def _setup_optimizer(self):
         """Initialize the mealpy optimizer"""
