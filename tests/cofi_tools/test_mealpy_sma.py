@@ -189,7 +189,7 @@ class TestMealpySma:
 
         options = InversionOptions()
         options.set_tool("mealpy.sma")
-        options.set_params(epoch=20, pop_size=10, seed=42)
+        options.set_params(epoch=200, pop_size=10, seed=42)
 
         inv = Inversion(problem, options)
         result = inv.run()
