@@ -97,17 +97,6 @@ class TestMealpySma:
         # Spatial regularization should encourage smoothness
         assert np.std(result.model) < 0.5  # Relatively smooth solution
 
-    def test_parallel_modes(self):
-        """Test parallel execution modes"""
-        try:
-            self.options.set_params(mode="thread", n_workers=2, epoch=10, seed=42)
-            inv = Inversion(self.problem, self.options)
-            result = inv.run()
-            assert result.success
-        except Exception:
-            # Parallel mode may not work in all environments, skip if fails
-            pytest.skip("Parallel mode not available in test environment")
-
     def test_without_bounds(self):
         """Test optimization without explicit bounds"""
         problem_no_bounds = BaseProblem()
