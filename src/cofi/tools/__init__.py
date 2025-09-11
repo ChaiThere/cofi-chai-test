@@ -10,6 +10,7 @@ from ._cofi_border_collie_optimization import CoFIBorderCollieOptimization
 from ._bayes_bay import BayesBay
 from ._neighpy import Neighpy, NeighpyI, NeighpyII
 from ._scipy_sparse_lstsq import ScipySparseLstSq
+from ._mealpy_sma import MealpySma
 
 
 __all__ = [
@@ -26,6 +27,7 @@ __all__ = [
     "NeighpyI",
     "NeighpyII",
     "ScipySparseLstSq",
+    "MealpySma",
 ]
 
 # inference tools table grouped by method:
@@ -37,6 +39,8 @@ inference_tools_table = {
         "torch.optim": PyTorchOptim,
         "cofi.border_collie_optimization": CoFIBorderCollieOptimization,
         "neighpyI": NeighpyI,
+        "mealpy.sma": MealpySma,
+        "mealpy.slime_mould": MealpySma,
     },
     "matrix solvers": {
         "scipy.linalg.lstsq": ScipyLstSq,
