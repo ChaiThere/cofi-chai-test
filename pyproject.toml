@@ -48,7 +48,7 @@ dependencies = [
     "findiff>=0.10.0",
     "torch>=2.0.0",
     "bayesbay>=0.3.0",
-    "neighpy>=0.1.5",
+    "neighpy>=0.1.5,!=0.1.8",
     "mealpy>=3.0.0,<3.0.3",
 ]
 dynamic = ["version"]
