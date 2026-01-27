@@ -21,5 +21,5 @@ jupyterlab
 versioningit==2.1.0
 seislib>=0.6.10
 git+https://github.com/miili/pysurf96.git
-neighpy>=0.1.5
+neighpy>=0.1.5, !=0.1.8
 mealpy>=3.0.0
