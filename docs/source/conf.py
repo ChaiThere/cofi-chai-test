@@ -13,9 +13,14 @@
 import os
 import datetime
 import sys
-from sphinx_gallery.sorting import FileNameSortKey
 
 import cofi
+
+# Check if building on Read the Docs
+on_rtd = os.environ.get("READTHEDOCS") == "True"
+
+if not on_rtd:
+    from sphinx_gallery.sorting import FileNameSortKey
 
 
 # -- Project information -----------------------------------------------------
@@ -40,10 +45,13 @@ extensions = [
     "myst_nb",
     "sphinxcontrib.mermaid",
     "run_sphinx_autogen",               # our own extension
-    "gen_gallery_scripts",              # our own extension
     "render_cofi_gallery",              # our own extension
-    "sphinx_gallery.gen_gallery",
 ]
+
+# On RTD, skip sphinx-gallery execution - use pre-committed outputs
+if not on_rtd:
+    extensions.append("gen_gallery_scripts")        # converts notebooks to gallery scripts
+    extensions.append("sphinx_gallery.gen_gallery") # executes gallery scripts
 
 templates_path = ["_templates"]
 
@@ -140,17 +148,19 @@ html_context = {
 
 
 # -- Sphinx Gallery settings --------------------------------------------------
-sphinx_gallery_conf = {
-    "examples_dirs": ["examples", "tutorials/scripts"],
-    "gallery_dirs": ["examples/generated", "tutorials/generated"],
-    "within_subsection_order": FileNameSortKey,
-    "filename_pattern": ".",
-    "ignore_pattern": "._lib.py|_preprocessing.py|xrayTomography.py|thin_plate_inversion.py|travel_time_tomography.py",
-    "pypandoc": True,
-    "download_all_examples": False,
-    "doc_module": "cofi",
-    "run_stale_examples": False,
-}
+# Sphinx Gallery settings (only when not on RTD)
+if not on_rtd:
+    sphinx_gallery_conf = {
+        "examples_dirs": ["examples", "tutorials/scripts"],
+        "gallery_dirs": ["examples/generated", "tutorials/generated"],
+        "within_subsection_order": FileNameSortKey,
+        "filename_pattern": ".",
+        "ignore_pattern": "._lib.py|_preprocessing.py|xrayTomography.py|thin_plate_inversion.py|travel_time_tomography.py",
+        "pypandoc": True,
+        "download_all_examples": False,
+        "doc_module": "cofi",
+        "run_stale_examples": False,
+    }
 
 
 # -- myst-nb settings ---------------------------------------------------------
