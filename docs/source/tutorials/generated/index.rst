@@ -42,7 +42,7 @@ Below is an ordered list of tutorials.
   .. image:: /tutorials/generated/images/thumb/sphx_glr_1D_rayleigh_wave_phase_velocity_inversion_thumb.png
     :alt:
 
-  :ref:`sphx_glr_tutorials_generated_1D_rayleigh_wave_phase_velocity_inversion.py`
+  :doc:`/tutorials/generated/1D_rayleigh_wave_phase_velocity_inversion`
 
 .. raw:: html
 
@@ -59,7 +59,7 @@ Below is an ordered list of tutorials.
   .. image:: /tutorials/generated/images/thumb/sphx_glr_electrical_resistivity_tomography_thumb.png
     :alt:
 
-  :ref:`sphx_glr_tutorials_generated_electrical_resistivity_tomography.py`
+  :doc:`/tutorials/generated/electrical_resistivity_tomography`
 
 .. raw:: html
 
@@ -76,28 +76,11 @@ Below is an ordered list of tutorials.
   .. image:: /tutorials/generated/images/thumb/sphx_glr_linear_regression_thumb.png
     :alt:
 
-  :ref:`sphx_glr_tutorials_generated_linear_regression.py`
+  :doc:`/tutorials/generated/linear_regression`
 
 .. raw:: html
 
       <div class="sphx-glr-thumbnail-title">Linear regression</div>
-    </div>
-
-
-.. raw:: html
-
-    <div class="sphx-glr-thumbcontainer" tooltip="Linear &amp; non-linear travel time tomography">
-
-.. only:: html
-
-  .. image:: /tutorials/generated/images/thumb/sphx_glr_travel_time_tomography_thumb.png
-    :alt:
-
-  :ref:`sphx_glr_tutorials_generated_travel_time_tomography.py`
-
-.. raw:: html
-
-      <div class="sphx-glr-thumbnail-title">Linear & non-linear travel time tomography</div>
     </div>
 
 
@@ -114,7 +97,6 @@ Below is an ordered list of tutorials.
    /tutorials/generated/1D_rayleigh_wave_phase_velocity_inversion
    /tutorials/generated/electrical_resistivity_tomography
    /tutorials/generated/linear_regression
-   /tutorials/generated/travel_time_tomography
 
 
 

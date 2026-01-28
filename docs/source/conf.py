@@ -145,10 +145,11 @@ sphinx_gallery_conf = {
     "gallery_dirs": ["examples/generated", "tutorials/generated"],
     "within_subsection_order": FileNameSortKey,
     "filename_pattern": ".",
-    "ignore_pattern": "._lib.py|_preprocessing.py",
+    "ignore_pattern": "._lib.py|_preprocessing.py|xrayTomography.py|thin_plate_inversion.py|travel_time_tomography.py",
     "pypandoc": True,
     "download_all_examples": False,
     "doc_module": "cofi",
+    "run_stale_examples": False,
 }
 
 

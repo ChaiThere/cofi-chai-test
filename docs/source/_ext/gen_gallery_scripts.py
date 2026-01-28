@@ -125,11 +125,13 @@ def move_data_files(src_folder, dst_folder):
     # collect all data and library files to move to dst_folder
     all_patterns = [
         "*.npz",
+        "*.npy",
         "*.dat",
         "*.csv",
         "*.vtk",
         "*.txt",
         "*_lib.py",
+        "xrayTomography.py",
     ]
     all_data = []
     for pattern in all_patterns:

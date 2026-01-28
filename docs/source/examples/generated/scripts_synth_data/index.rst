@@ -22,7 +22,7 @@ Synthetic Examples
   .. image:: /examples/generated/scripts_synth_data/images/thumb/sphx_glr_fmm_tomography_thumb.png
     :alt:
 
-  :ref:`sphx_glr_examples_generated_scripts_synth_data_fmm_tomography.py`
+  :doc:`/examples/generated/scripts_synth_data/fmm_tomography`
 
 .. raw:: html
 
@@ -39,7 +39,7 @@ Synthetic Examples
   .. image:: /examples/generated/scripts_synth_data/images/thumb/sphx_glr_fmm_tomography_regularization_discussion_thumb.png
     :alt:
 
-  :ref:`sphx_glr_examples_generated_scripts_synth_data_fmm_tomography_regularization_discussion.py`
+  :doc:`/examples/generated/scripts_synth_data/fmm_tomography_regularization_discussion`
 
 .. raw:: html
 
@@ -56,7 +56,7 @@ Synthetic Examples
   .. image:: /examples/generated/scripts_synth_data/images/thumb/sphx_glr_linear_regression_thumb.png
     :alt:
 
-  :ref:`sphx_glr_examples_generated_scripts_synth_data_linear_regression.py`
+  :doc:`/examples/generated/scripts_synth_data/linear_regression`
 
 .. raw:: html
 
@@ -73,7 +73,7 @@ Synthetic Examples
   .. image:: /examples/generated/scripts_synth_data/images/thumb/sphx_glr_modified_himmelblau_thumb.png
     :alt:
 
-  :ref:`sphx_glr_examples_generated_scripts_synth_data_modified_himmelblau.py`
+  :doc:`/examples/generated/scripts_synth_data/modified_himmelblau`
 
 .. raw:: html
 
@@ -90,7 +90,7 @@ Synthetic Examples
   .. image:: /examples/generated/scripts_synth_data/images/thumb/sphx_glr_nonlinear_curve_fitting_thumb.png
     :alt:
 
-  :ref:`sphx_glr_examples_generated_scripts_synth_data_nonlinear_curve_fitting.py`
+  :doc:`/examples/generated/scripts_synth_data/nonlinear_curve_fitting`
 
 .. raw:: html
 
@@ -107,7 +107,7 @@ Synthetic Examples
   .. image:: /examples/generated/scripts_synth_data/images/thumb/sphx_glr_pygimli_dcip_thumb.png
     :alt:
 
-  :ref:`sphx_glr_examples_generated_scripts_synth_data_pygimli_dcip.py`
+  :doc:`/examples/generated/scripts_synth_data/pygimli_dcip`
 
 .. raw:: html
 
@@ -124,7 +124,7 @@ Synthetic Examples
   .. image:: /examples/generated/scripts_synth_data/images/thumb/sphx_glr_pygimli_ert_thumb.png
     :alt:
 
-  :ref:`sphx_glr_examples_generated_scripts_synth_data_pygimli_ert.py`
+  :doc:`/examples/generated/scripts_synth_data/pygimli_ert`
 
 .. raw:: html
 
@@ -141,7 +141,7 @@ Synthetic Examples
   .. image:: /examples/generated/scripts_synth_data/images/thumb/sphx_glr_receiver_function_inversion_thumb.png
     :alt:
 
-  :ref:`sphx_glr_examples_generated_scripts_synth_data_receiver_function_inversion.py`
+  :doc:`/examples/generated/scripts_synth_data/receiver_function_inversion`
 
 .. raw:: html
 
@@ -158,7 +158,7 @@ Synthetic Examples
   .. image:: /examples/generated/scripts_synth_data/images/thumb/sphx_glr_sw_rf_joint_synthetic_thumb.png
     :alt:
 
-  :ref:`sphx_glr_examples_generated_scripts_synth_data_sw_rf_joint_synthetic.py`
+  :doc:`/examples/generated/scripts_synth_data/sw_rf_joint_synthetic`
 
 .. raw:: html
 
@@ -175,7 +175,7 @@ Synthetic Examples
   .. image:: /examples/generated/scripts_synth_data/images/thumb/sphx_glr_xray_tomography_thumb.png
     :alt:
 
-  :ref:`sphx_glr_examples_generated_scripts_synth_data_xray_tomography.py`
+  :doc:`/examples/generated/scripts_synth_data/xray_tomography`
 
 .. raw:: html
 
