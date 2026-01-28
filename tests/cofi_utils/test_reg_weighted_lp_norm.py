@@ -63,7 +63,7 @@ def test_weighting_flattening():
 def test_weighting_smoothing():
     reg = LpNormRegularization(model_shape=(5,), weighting_matrix="smoothing")
     assert reg.matrix[0,0] == 2
-    assert reg.matrix[0,1] == -5
+    assert pytest.approx(reg.matrix[0,1]) == -5
     assert reg.matrix[1,0] == reg.matrix[-2,-1] == 1
     assert pytest.approx(reg.matrix[-1,-1]) == 2
     assert pytest.approx(reg.matrix[-1,-2]) == -5
