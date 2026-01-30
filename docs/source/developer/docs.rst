@@ -78,5 +78,43 @@ To generate and check documentation locally,
     $ make html
     $ python -m http.server -d build/html
 
-Put ``localhost:8000`` into your browser address bar to read the generated 
+Put ``localhost:8000`` into your browser address bar to read the generated
 documentation.
+
+
+Updating gallery outputs
+------------------------
+
+Read the Docs (RTD) has resource limits that prevent executing sphinx-gallery
+examples during the build. To work around this, we pre-generate gallery outputs
+locally using Apptainer and commit them.
+
+**1. Build the Apptainer image** (if needed):
+
+.. code:: console
+
+    $ cd /path/to/inlab-apptainer
+    $ APPTAINER_TMPDIR=$PWD ./build.sh
+
+**2. Run sphinx build locally**:
+
+.. code:: console
+
+    $ cd docs/source
+    $ apptainer exec /path/to/inlab.fedora.sif bash -c 'conda activate inlab && make clean html'
+
+**3. Commit generated outputs**:
+
+.. code:: console
+
+    $ git add docs/source/tutorials/generated/ docs/source/examples/generated/
+    $ git commit -m "docs: regenerate gallery outputs"
+    $ git push
+
+RTD will use the pre-committed outputs instead of executing examples.
+
+.. note::
+
+    - The Apptainer image includes all dependencies (pygimli, pysurf96, espresso, etc.)
+    - RTD skips sphinx-gallery execution via ``on_rtd`` check in ``conf.py``
+    - Some examples are ignored due to compatibility issues: ``thin_plate_inversion.py``, ``travel_time_tomography.py``
