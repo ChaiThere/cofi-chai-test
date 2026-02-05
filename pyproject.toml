@@ -20,7 +20,7 @@ requires = ["setuptools>=42", "numpy", "versioningit"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "cofi"
+name = "cofi-chai-test"
 description = "Common Framework for Inference"
 authors = [{name = "InLab, CoFI development team"}]
 readme = "README.md"
