@@ -1,0 +1,63 @@
+name: Build Docs (self-hosted, Apptainer)
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "docs/**"
+      - "src/**"
+      - "pyproject.toml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "docs/**"
+      - "src/**"
+      - "pyproject.toml"
+
+jobs:
+  build-docs:
+    runs-on:
+      - self-hosted
+      - ceres-bot
+
+    env:
+      APPTAINER_IMAGE: /opt/inlab-apptainer/inlab.fedora.sif
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify Apptainer image
+        run: |
+          if [ ! -f "$APPTAINER_IMAGE" ]; then
+            echo "Apptainer image not found: $APPTAINER_IMAGE"
+            exit 1
+          fi
+
+      - name: Build Sphinx docs inside Apptainer
+        run: |
+          cd docs/source
+          apptainer exec "$APPTAINER_IMAGE" bash -lc "
+            conda activate inlab &&
+            make clean html
+          "
+
+      - name: Check for gallery changes
+        id: diff
+        run: |
+          git status --porcelain
+          if [ -n \"$(git status --porcelain)\" ]; then
+            echo \"changed=true\" >> $GITHUB_OUTPUT
+          else
+            echo \"changed=false\" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit regenerated gallery outputs
+        if: steps.diff.outputs.changed == 'true' && github.event_name != 'pull_request'
+        run: |
+          git add docs/source/examples/generated docs/source/tutorials/generated
+          git commit -m "docs: regenerate gallery outputs (self-hosted)"
+          git push
